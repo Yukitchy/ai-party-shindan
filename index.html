@@ -199,7 +199,9 @@
   .mix-row + .mix-row::before {
     content: ""; position: absolute; top: 0; left: 16px; right: 0; height: 0.5px; background: var(--separator);
   }
-  .mix-name { width: 136px; font-size: 13px; display: flex; align-items: center; gap: 4px; white-space: nowrap; }
+  .mix-label { width: 140px; flex-shrink: 0; }
+  .mix-title { font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 4px; white-space: nowrap; }
+  .mix-sub { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
   .mix-badge {
     font-size: 10px; font-weight: 700; color: #fff; background: var(--tint);
     border-radius: 8px; padding: 2px 6px; flex-shrink: 0;
@@ -440,7 +442,7 @@ const PITFALLS = {
 
 const TYPES = {
   conceptor: {
-    name:'コンセプター', nick:'発明家', emoji:'💡', tint:'#E8590C', tintDeep:'#B23E07',
+    name:'コンセプター', nick:'発明家', tag:'ひらめき・発想型', emoji:'💡', tint:'#E8590C', tintDeep:'#B23E07',
     catch:'始める天才。終わらせるのは、苦手。',
     gift:'新しい一手を思いつく発想力',
     desc:'未来を描く発明家タイプ。ゼロから生み出す力と「こうすればいいのに」の瞬発力は4タイプ随一。ただしAIは「増やす方向」には無限に付き合ってくれるため、放っておくと作りかけの山ができます。AIには火に油を注ぐ係ではなく、ブレーキと簿記を任せるのが正解。',
@@ -460,7 +462,7 @@ const TYPES = {
     defaultPitfall:'creation',
   },
   conciliator: {
-    name:'コンシリエーター', nick:'宿屋のあるじ', emoji:'🏮', tint:'#34C759', tintDeep:'#1E8A44',
+    name:'コンシリエーター', nick:'宿屋のあるじ', tag:'共感・調和型', emoji:'🏮', tint:'#34C759', tintDeep:'#1E8A44',
     catch:'みんなの味方。自分の時間が、残らない。',
     gift:'人の気持ちを汲む共感力',
     desc:'人の心を動かす調和役タイプ。空気を読み、対立をやわらげ、頼まれると応えてしまう。信頼は厚いのに、自分の作業時間が他人の用事で埋まりがち。AIに段取りを手伝わせると「引き受ける量」がさらに増える罠も。AIには断り文と、自分時間の防衛を任せるのが正解。',
@@ -480,7 +482,7 @@ const TYPES = {
     defaultPitfall:'notification',
   },
   knower: {
-    name:'ノウアー', nick:'賢者', emoji:'📖', tint:'#AF52DE', tintDeep:'#7A2BA8',
+    name:'ノウアー', nick:'賢者', tag:'即断・確信型', emoji:'📖', tint:'#AF52DE', tintDeep:'#7A2BA8',
     catch:'答えはもう、自分の中にある。',
     gift:'腹の底では答えが決まっている即断力',
     desc:'即断即決の裁定者タイプ。事実と結論で動き、判断の速さは4タイプ随一。ただしAIを「自分の結論を補強してくれる証拠集め係」にすると、間違いに気づく機会がさらに減ります。AIには反対尋問と、伝え方の翻訳を任せるのが正解。',
@@ -500,7 +502,7 @@ const TYPES = {
     defaultPitfall:'approval',
   },
   deliberator: {
-    name:'デリバレーター', nick:'鍛冶職人', emoji:'⚒️', tint:'#007AFF', tintDeep:'#0050B0',
+    name:'デリバレーター', nick:'鍛冶職人', tag:'熟考・慎重型', emoji:'⚒️', tint:'#007AFF', tintDeep:'#0050B0',
     catch:'石橋を叩いて、磨いてから渡る。',
     gift:'選択肢を比べて精度を上げる慎重さ',
     desc:'精度で信頼を築く設計者タイプ。比較検討の深さと仕上げの丁寧さは4タイプ随一。ただし完璧主義で「出す」のが遅れがちで、新しい道具への腰も重い。AIには偵察と、たたき台づくりと、「60点で一度出す」背中押しを任せるのが正解。',
@@ -671,7 +673,10 @@ function renderResult() {
     const fill = k === result.primary ? 'var(--tint)' : k === result.secondary ? 'var(--tint)' : 'rgba(120,120,128,0.45)';
     const op = k === result.secondary ? 'opacity:0.55;' : '';
     return `<div class="mix-row">
-      <span class="mix-name">${TYPES[k].name}${badge}</span>
+      <div class="mix-label">
+        <div class="mix-title">${TYPES[k].name}${badge}</div>
+        <div class="mix-sub">${TYPES[k].tag}</div>
+      </div>
       <div class="mix-bar"><div class="mix-fill" style="width:${result.pct[k]}%; background:${fill}; ${op}"></div></div>
       <span class="mix-pct">${result.pct[k]}%</span>
     </div>`;
