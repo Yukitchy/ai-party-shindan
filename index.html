@@ -137,11 +137,12 @@
 
   /* ===== ホーム画面 ===== */
   .hero { text-align: center; padding: 28px 8px 6px; }
-  .hero .app-icon {
-    width: 84px; height: 84px; border-radius: 20px; margin: 0 auto 16px;
-    background: linear-gradient(135deg, var(--tint), #8482e0);
-    display: flex; align-items: center; justify-content: center; font-size: 44px;
-    box-shadow: 0 8px 20px var(--tint-soft);
+  .type-teaser { display: flex; justify-content: center; gap: 16px; margin-bottom: 18px; }
+  .type-teaser .tt { display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 11px; color: var(--text-secondary); }
+  .type-teaser .tt-icon {
+    width: 52px; height: 52px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center; font-size: 26px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.10);
   }
   .hero h1 { font-size: 28px; font-weight: 700; letter-spacing: 0.2px; }
   .hero .subtitle { font-size: 15px; color: var(--text-secondary); margin-top: 6px; line-height: 1.5; }
@@ -274,7 +275,12 @@
     <section class="screen active" id="screen-home">
       <div class="screen-scroll" style="padding-top:70px;">
         <div class="hero">
-          <div class="app-icon">⚔️</div>
+          <div class="type-teaser">
+            <div class="tt"><div class="tt-icon" style="background:linear-gradient(135deg,#E8590C,#B23E07);">💡</div>ひらめき</div>
+            <div class="tt"><div class="tt-icon" style="background:linear-gradient(135deg,#34C759,#1E8A44);">🏮</div>共感</div>
+            <div class="tt"><div class="tt-icon" style="background:linear-gradient(135deg,#AF52DE,#7A2BA8);">📖</div>即断</div>
+            <div class="tt"><div class="tt-icon" style="background:linear-gradient(135deg,#007AFF,#0050B0);">⚒️</div>熟考</div>
+          </div>
           <h1>AIパーティ編成診断</h1>
           <p class="subtitle">あなたはAIを、どの職で雇うべきか。<br>2分・16問でわかる相棒設計。</p>
         </div>
